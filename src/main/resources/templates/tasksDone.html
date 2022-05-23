@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="ISO-8859-1">
+  <title>TasksDone List</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+<div class="container my-2">
+
+
+
+  <h1 align="center">TasksDone List</h1>
+  <a th:href = "@{/}" class="btn btn-secondary btn-sm mb-3"> View available tasks! </a>
+  <table border="1" class="table table-striped table-responsive-md">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>importance</th>
+      <th>description</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+
+        <tr th:each="done : ${listDoneTasks}">
+      <td th:text="${done.id}"></td>
+      <td th:text="${done.importance}"></td>
+      <td th:text="${done.description}"></td>
+
+      <td>
+        <a th:href = "@{/deleteDoneTask/{id}(id=${done.id})}" class="btn btn-danger btn-sm mb-3"> Delete ! </a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+
+</html>
